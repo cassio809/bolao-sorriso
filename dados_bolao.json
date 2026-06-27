@@ -1,0 +1,34 @@
+{
+    "participantes": {
+        "Cássio": 25
+    },
+    "jogos": [
+        {
+            "id": 1,
+            "fase": "Oitavas",
+            "time_a": "Alemanha",
+            "time_b": "França",
+            "gols_a_real": 2,
+            "gols_b_real": 1,
+            "encerrado": true,
+            "vencedor": "Alemanha"
+        },
+        {
+            "id": 2,
+            "fase": "2ª Fase",
+            "time_a": "Brasil",
+            "time_b": "Japao",
+            "gols_a_real": 1,
+            "gols_b_real": 0,
+            "encerrado": true,
+            "vencedor": "Brasil"
+        }
+    ],
+    "palpites": {
+        "2,Cássio": [
+            1,
+            0,
+            "Brasil"
+        ]
+    }
+}
