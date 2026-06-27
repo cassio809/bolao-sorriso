@@ -17,7 +17,7 @@ O sistema foi desenvolvido utilizando **Python** e **Streamlit** para fornecer u
 - **👥 Gestão de Participantes:** Interface simples para adicionar ou remover competidores do bolão.
 - **⚽ Controle de Confrontos:** Cadastro de novos jogos de mata-mata (2ª Fase, Oitavas, Quartas, Semifinal e Final), com opção para excluir partidas em caso de erro de digitação.
 - **📝 Digitação Ágil de Palpites:** Tela otimizada por lote com os nomes dos times em evidência e navegação rápida via tecla `TAB`.
-- **🥅 Critério de Desempate:** Dropdown exclusivo para os participantes escolherem quem avança de fase em caso de palpites de empate.
+- **🥅 Critério de Desempate:** Para os participantes escolherem quem avança de fase em caso de palpites de empate.
 - **💾 Persistência de Dados:** Integração com arquivo local estruturado em `JSON` (`dados_bolao.json`), garantindo que nenhuma informação seja perdida caso o servidor reinicie.
 
 ---
