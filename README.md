@@ -1,34 +1,33 @@
-# 🏆 Bolão Mata-Mata - Copa 2026
+# 🏆 Bolão Mata-Mata — Clínica Sorriso de Todos
 
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![JSON](https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+Um sistema web dinâmico e responsivo desenvolvido em Python para gestão de palpites e pontuações do mata-mata da Copa do Mundo 2026. Projetado inicialmente para integrar e descontrair a equipe da **Clínica Sorriso de Todos**, o projeto utiliza uma arquitetura serverless moderna conectada diretamente a um banco de dados relacional na nuvem.
 
-> **Aplicação personalizada para a Clínica Sorriso de Todos acompanhar os jogos e palpites da Copa do Mundo 2026 de forma interativa e em tempo real!**
+## 🚀 Tecnologias Utilizadas
 
-O sistema foi desenvolvido utilizando **Python** e **Streamlit** para fornecer uma interface web rápida, elegante e de fácil navegação para o gerenciamento de participantes, inserção de palpites de mata-mata e cálculo automatizado do ranking geral.
+* **[Python 3.14+](https://www.python.org/):** Linguagem base para desenvolvimento da lógica de negócio.
+* **[Streamlit](https://streamlit.io/):** Framework web utilizado para construir a interface do utilizador de forma rápida, limpa e interativa.
+* **[Supabase](https://supabase.com/):** Plataforma Backend-as-a-Service (BaaS) baseada em **PostgreSQL**, utilizada para persistência confiável de dados, substituindo integrações legadas e instáveis.
+* **[Pandas](https://pandas.pydata.org/):** Biblioteca para manipulação de estruturas de dados e geração do ranking de participantes.
 
----
+## 🛠️ Arquitetura e Estrutura do Banco de Dados
 
-## 🚀 Funcionalidades
+O ecossistema do banco de dados no Supabase é composto por três tabelas principais com relacionamentos de integridade referencial (`FOREIGN KEY` com ações `ON DELETE CASCADE`):
 
-- **📊 Ranking Geral:** Tabela dinâmica que ordena os participantes automaticamente com base na pontuação acumulada.
-- **👥 Gestão de Participantes:** Interface simples para adicionar ou remover competidores do bolão.
-- **⚽ Controle de Confrontos:** Cadastro de novos jogos de mata-mata (2ª Fase, Oitavas, Quartas, Semifinal e Final), com opção para excluir partidas em caso de erro de digitação.
-- **📝 Digitação Ágil de Palpites:** Tela otimizada por lote com os nomes dos times em evidência e navegação rápida via tecla `TAB`.
-- **🥅 Critério de Desempate:** Para os participantes escolherem quem avança de fase em caso de palpites de empate.
-- **💾 Persistência de Dados:** Integração com arquivo local estruturado em `JSON` (`dados_bolao.json`), garantindo que nenhuma informação seja perdida caso o servidor reinicie.
+1.  **`participantes`:** Regista os jogadores do bolão e a soma de pontos.
+2.  **`jogos`:** Armazena os confrontos, fases do torneio, resultados reais e o status da partida.
+3.  **`palpites`:** Guarda os placares previstos por cada participante para cada jogo específico, garantindo um único palpite por participante/confronto.
 
----
+## ✨ Funcionalidades Principais
 
-## 🎯 Regras de Pontuação
+* **📊 Ranking Geral:** Tabela classificativa atualizada em tempo real e ordenada de forma decrescente com base nas pontuações calculadas.
+* **👥 Gestão de Participantes:** Interface CRUD simples para adicionar novos membros ao bolão ou remover participantes existentes.
+* **⚽ Painel de Arbitragem:** Área administrativa dedicada a cadastrar novos jogos do mata-mata, introduzir resultados oficiais e encerrar partidas, disparando o gatilho de cálculo de pontos.
+* **📝 Input Rápido de Palpites:** Formulário estruturado por jogo que permite preencher e atualizar os palpites de todos os jogadores rapidamente.
 
-O sistema calcula os pontos de cada rodada de forma automatizada seguindo os seguintes critérios:
+## 🧮 Regras de Pontuação
 
-| Condição do Palpite | Pontuação |
-| :--- | :---: |
-| **Acerto exato do placar** (Ex: Palpite 2x1 \| Resultado 2x1) | **25 pontos** |
-| **Acerto do vencedor ou empate**, mas com placar incorreto | **10 pontos** |
-| **Erro do vencedor**, mas acertou a quantidade de gols de um dos times | **5 pontos** |
-| **Erro total** de vencedor e gols | **0 pontos** |
+A distribuição de pontos segue critérios fixos após o encerramento oficial de cada partida:
+* **Acerto em cheio do placar:** `25 pontos` .
+* **Acerto do vencedor/empate:** `10 pontos` .
+* **Acerto de gol isolado de uma das equipes:** `5 pontos` (Ex: Palpite 1x1, Placar Real 1x3 — acertou os golos de uma equipe).
+
